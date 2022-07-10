@@ -10,14 +10,15 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 public class CalculateTest {
-    private HashSet<Given> set1;
-    private HashSet<Given> set2;
+
+    private HashSet<Character> set1;
+    private HashSet<Character> set2;
 
 
     @Before
     public void setUp() {
-        set1 = new HashSet<>(Arrays.asList(Given.A, Given.B));
-        set2 = new HashSet<>(Arrays.asList(Given.B, Given.C));
+        set1 = new HashSet<>(Arrays.asList('A', 'B'));
+        set2 = new HashSet<>(Arrays.asList('B', 'C'));
     }
 
     @After
@@ -28,29 +29,29 @@ public class CalculateTest {
 
     @Test
     public void union() {
-        HashSet<Given> expect = new HashSet<>(Arrays.asList(Given.A, Given.B, Given.C));
-        Set<Given> actual = Calculate.union(set1, set2);
-        assertEquals(actual, expect);
+        HashSet<Character> expect = new HashSet<>(Arrays.asList('A', 'B', 'C'));
+        Set<Character> actual = Calculate.union(set1, set2);
+        assertEquals(expect, actual);
     }
 
     @Test
     public void intersection() {
-        HashSet<Given> expect = new HashSet<>(List.of(Given.B));
-        Set<Given> actual = Calculate.intersection(set1, set2);
-        assertEquals(actual, expect);
+        HashSet<Character> expect = new HashSet<>(List.of('B'));
+        Set<Character> actual = Calculate.intersection(set1, set2);
+        assertEquals(expect, actual);
     }
 
     @Test
     public void minus() {
-        HashSet<Given> expect = new HashSet<>(List.of(Given.A));
-        Set<Given> actual = Calculate.minus(set1, set2);
-        assertEquals(actual, expect);
+        HashSet<Character> expect = new HashSet<>(List.of('A'));
+        Set<Character> actual = Calculate.minus(set1, set2);
+        assertEquals(expect, actual);
     }
 
     @Test
     public void difference() {
-        HashSet<Given> expect = new HashSet<>(Arrays.asList(Given.A, Given.C));
-        Set<Given> actual = Calculate.difference(set1, set2);
-        assertEquals(actual, expect);
+        HashSet<Character> expect = new HashSet<>(Arrays.asList('A', 'C'));
+        Set<Character> actual = Calculate.difference(set1, set2);
+        assertEquals(expect, actual);
     }
 }
